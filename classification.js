@@ -22,7 +22,7 @@ const CLASSIFICATION_RULES = {
 };
 
 function classifyTask(title, description) {
-    const text = `${title} ${description}`;
+    const text = `${title} ${description}.toLowerCase()`;
     
     // 1. Determine Category
     let category = 'general';

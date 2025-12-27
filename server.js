@@ -98,6 +98,17 @@ app.delete('/api/tasks/:id', async (req, res) => {
     res.json({ message: 'Task deleted' });
 });
 
+app.post('/api/classify', (req, res) => {
+    const { title, description } = req.body;
+    // Use the logic import you created in the previous step
+    const { classifyTask } = require('./classification'); 
+    
+    if (!title) return res.status(400).json({ error: 'Title is required' });
+
+    const result = classifyTask(title, description || '');
+    res.json(result);
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
